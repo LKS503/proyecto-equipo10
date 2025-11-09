@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MercadoKids - Dark</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>🛒 MercadoKids</h1>
+    <div>
+      <button class="cart-btn" id="open-cart">Carrito (<span id="cart-count">0</span>)</button>
+    </div>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Buscar productos para niños...">
+  </div>
+
+  <div class="categories">
+    <button class="active" data-cat="todos">Todos</button>
+    <button data-cat="articulos">Artículos</button>
+    <button data-cat="comida">Comida</button>
+    <button data-cat="bebidas">Bebidas</button>
+    <button data-cat="juguetes">Juguetes</button>
+    <button data-cat="ropa">Ropa</button>
+  </div>
+
+  <h2 style="width:90%;margin:auto;">Productos</h2>
+
+  <div class="products" id="productContainer"></div>
+
+  <!-- Modal Carrito -->
+  <div class="modal" id="modal-cart">
+    <div class="card">
+      <h3>Carrito</h3>
+      <div id="cart-items">Cargando...</div>
+      <div style="text-align:right;margin-top:10px">
+        <strong>Total: $<span id="cart-total">0.00</span></strong>
+      </div>
+
+      <!-- 🔹 Selector de billetera destino -->
+      <div style="margin-top:12px;">
+        <label for="target-wallet" style="color:#fff;">Seleccionar billetera destino:</label><br>
+        <select id="target-wallet" class="btn btn-dark">
+          <option value="walletA">Wallet A (Líder del grupo)</option>
+          <option value="walletB">Wallet B (Compañero 2)</option>
+        </select>
+      </div>
+
+      <div style="margin-top:12px;text-align:right">
+        <button class="btn" id="checkout-sats">Pagar en Sats (Lightning)</button>
+        <button class="btn btn-dark" id="close-cart">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Invoice -->
+  <div class="modal" id="modal-invoice">
+    <div class="card" id="invoice-card">
+      <h3>Pagar en Sats</h3>
+      <div id="invoice-body" style="text-align:center">
+        <p id="invoice-status">Generando factura...</p>
+        <img id="invoice-qr" class="qr" src="" alt="QR">
+        <pre id="invoice-bolt" style="overflow:auto;background:#0d0d0d;padding:8px;border-radius:6px;border:1px solid #222;color:#fff"></pre>
+        <div style="margin-top:8px">
+          <button class="btn" id="copy-bolt">Copiar BOLT11</button>
+        </div>
+      </div>
+      <div style="margin-top:10px;text-align:right">
+        <button class="btn btn-dark" id="close-invoice">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
